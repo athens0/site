@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<main class=".main-padding other">
+    <div class="text-center trt1">
+        <h1 class="title">Вакансии</h1>
+    </div>
+    <div class="trt2">
+        <div class="text-center container">
+            <h2 class="title">Отправить заявку</h2>
+            {% if current_user.is_authenticated %}
+                <form action="" method="post" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <p>
+                        {{ form.job.label }}<br>
+                        {{ form.job(class="form-control") }}<br>
+                        {% for error in form.job.errors %}
+                            <p class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </p>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.year.label }}<br>
+                        {{ form.year(class="form-control") }}<br>
+                        {% for error in form.year.errors %}
+                            <p class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </p>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.desc.label }}<br>
+                        {{ form.desc(class="form-control") }}<br>
+                        {% for error in form.desc.errors %}
+                            <p class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </p>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.photo.label }}<br>
+                        {{ form.photo(class="form-control-file", type="file") }}<br>
+                        {% for error in form.photo.errors %}
+                            <p class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </p>
+                        {% endfor %}
+                    </p>
+                    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+                    {{message}}
+                </form>
+            {% else %}
+                <h3>Вы должны авторизоваться чтобы отправить заявку</h3>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}

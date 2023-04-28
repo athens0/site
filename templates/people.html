@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <main class=".main-padding other">
+        <div class="text-center trt1">
+            <h1 class="title">Состав</h1>
+        </div>
+        <div class="trt2">
+            <div class="d-flex justify-content-between">
+                {% for people in peoples %}
+                    <div class="p-2 text-center people-div">
+                        <h2>{{ people.0 }}</h2>
+                        <h4>Должность: {{ people.1 }}</h4>
+                        <h4>Стаж работы: {{ people.2 }}</h4>
+                        <h4>Контакты: {{ people.3 }}</h4>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock %}
